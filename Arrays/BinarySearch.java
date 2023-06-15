@@ -1,7 +1,5 @@
 package Arrays;
 
-import java.util.Arrays;
-
 public class BinarySearch {
 
     public static int search(int[] a, int target) {
