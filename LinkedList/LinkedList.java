@@ -109,6 +109,21 @@ public class LinkedList {
         return data;
     }
 
+    public void removeNthNodeFromBehind(int n) {
+        if (head == null || n > this.size())
+            return;
+        if (n == this.size()) {
+            head = head.next;
+            return;
+        }
+        Node temp = head;
+        int index = this.size() - n + 1;
+        for (int i = 1; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
+
     public void reverseLinkedList() {
         if (this.size() == 0 || this.size() == 1)
             return;
@@ -135,6 +150,19 @@ public class LinkedList {
         head.next.next = head;
         head.next = null;
         return newNode;
+    }
+
+    public int recursiveSearch(int target) {
+        return searchHelper(head, target);
+    }
+
+    public int searchHelper(Node head, int target) {
+        if (head == null)
+            return -1;
+        if (head.data == target)
+            return 0;
+        int index = searchHelper(head.next, target);
+        return index == -1 ? -1 : index + 1;
     }
 
     public void printList() {
@@ -164,10 +192,11 @@ class LinkedListDriver {
         list.add(3);
         list.add(4);
         list.add(5);
-        list.printList();
-        list.add(30, 3);
-        list.reverseLinkedList();
-        list.add(33, 3);
-        list.printList();
+        int index = list.recursiveSearch(30);
+        if (index == -1) {
+            System.out.println("The element is not present in the linked list!");
+            return;
+        }
+        System.out.println("The target is found at index : " + index);
     }
 }
