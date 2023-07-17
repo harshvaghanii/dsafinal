@@ -2,6 +2,14 @@ package DynamicProgramming.Tabulation;
 
 import java.util.*;
 
+/*
+ * The idea for this problem is :
+ * Copy the unique elements from the existing array in another array by using HashSet
+ * Sort the duplicated array
+ * Now from the two arrays, find the longest common subsequence.
+ * Since the second array is sorted, the longest common sequence will also be sorted in ascending order
+ */
+
 public class LongestIncreasingSubsequence {
 
     public static int lis(int[] nums) {
