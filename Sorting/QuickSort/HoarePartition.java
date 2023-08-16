@@ -6,12 +6,15 @@ public class HoarePartition {
         int i = low - 1;
         int j = high + 1;
         while (true) {
+            
             do {
                 i++;
             } while (a[i] < pivot);
+
             do {
                 j--;
             } while (a[j] > pivot);
+            
             if (i >= j)
                 return j;
             int temp = a[i];
